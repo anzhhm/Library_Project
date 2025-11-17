@@ -27,7 +27,7 @@ namespace Library_Project_Tests
         [Fact]
         public void AddBook_ShouldAddNewBook_WhenNotExists()
         {
-            _repoMock.Setup(r => r.FindBook("1984")).Returns((Book)null);
+            _repoMock.Setup(r => r.FindBook("1984")).Returns((Book?)null!); 
 
             _service.AddBook("1984", 3);
 
@@ -126,7 +126,7 @@ namespace Library_Project_Tests
         [Fact]
         public void ReturnBook_ShouldReturnFalse_WhenBookNotFound()
         {
-            _repoMock.Setup(r => r.FindBook("Unknown")).Returns((Book)null);
+            _repoMock.Setup(r => r.FindBook("Unknown")).Returns((Book?)null!);
 
             bool result = _service.ReturnBook(1, "Unknown");
 
@@ -234,7 +234,7 @@ namespace Library_Project_Tests
         [Fact]
         public void FindBook_ShouldReturnNull_WhenNotExists()
         {
-            _repoMock.Setup(r => r.FindBook("MissingBook")).Returns((Book)null);
+            _repoMock.Setup(r => r.FindBook("MissingBook")).Returns((Book?)null!);
 
             var result = _repoMock.Object.FindBook("MissingBook");
 
@@ -276,7 +276,7 @@ namespace Library_Project_Tests
         [Fact]
         public void ReturnBook_NotifyReturnNeverCalled_WhenBookNotFound()
         {
-            _repoMock.Setup(r => r.FindBook("Unknown")).Returns((Book)null);
+            _repoMock.Setup(r => r.FindBook("Unknown")).Returns((Book?)null!);
 
             _service.ReturnBook(1, "Unknown");
 
@@ -324,7 +324,7 @@ namespace Library_Project_Tests
         [Fact]
         public void AddBook_SaveBookAcceptsAnyBook()
         {
-            _repoMock.Setup(r => r.FindBook("NewBook")).Returns((Book)null);
+            _repoMock.Setup(r => r.FindBook("NewBook")).Returns((Book?)null!);
 
             _service.AddBook("NewBook", 1);
 
@@ -337,7 +337,7 @@ namespace Library_Project_Tests
         [Fact]
         public void AddBook_SaveBookWithCopiesGreaterThanZero()
         {
-            _repoMock.Setup(r => r.FindBook("PositiveBook")).Returns((Book)null);
+            _repoMock.Setup(r => r.FindBook("PositiveBook")).Returns((Book?)null!);
 
             _service.AddBook("PositiveBook", 5);
 
